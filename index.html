@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendify | Student Attendance Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">A</div>
+                <div>
+                    <h2>Attendify</h2>
+                    <span>Student Portal</span>
+                </div>
+            </div>
+
+            <nav>
+                <a class="active">Dashboard</a>
+                <a>Attendance</a>
+                <a>Students</a>
+                <a>Reports</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="status-dot"></div>
+                <div>
+                    <strong>System Online</strong>
+                    <small>Attendance service active</small>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">STUDENT ATTENDANCE</p>
+                    <h1>Good morning, Admin 👋</h1>
+                    <p class="subtitle">
+                        Monitor attendance and eligibility at a glance.
+                    </p>
+                </div>
+
+                <div class="date-box">
+                    <span>ACADEMIC YEAR</span>
+                    <strong>2026 — 2027</strong>
+                </div>
+
+            </header>
+
+
+            <!-- STAT CARDS -->
+            <section class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">👥</div>
+                    <div>
+                        <span>Total Students</span>
+                        <h2>120</h2>
+                        <small>Registered students</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div>
+                        <span>Eligible</span>
+                        <h2>94</h2>
+                        <small>Above 75% attendance</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">!</div>
+                    <div>
+                        <span>Low Attendance</span>
+                        <h2>26</h2>
+                        <small>Needs attention</small>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- MAIN GRID -->
+            <section class="content-grid">
+
+                <!-- ATTENDANCE CHECKER -->
+                <div class="panel checker">
+
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">QUICK CHECK</p>
+                            <h2>Attendance Eligibility</h2>
+                        </div>
+
+                        <span class="badge">Minimum 75%</span>
+                    </div>
+
+                    <p class="panel-description">
+                        Enter the student's attendance details to instantly
+                        determine eligibility.
+                    </p>
+
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+                            <label>Student ID</label>
+                            <input
+                                type="text"
+                                id="studentId"
+                                placeholder="e.g. 23A91A0501"
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label>Student Name</label>
+                            <input
+                                type="text"
+                                id="studentName"
+                                placeholder="Enter student name"
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label>Total Classes</label>
+                            <input
+                                type="number"
+                                id="totalClasses"
+                                placeholder="e.g. 40"
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label>Classes Attended</label>
+                            <input
+                                type="number"
+                                id="attendedClasses"
+                                placeholder="e.g. 34"
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <button class="check-btn" onclick="checkAttendance()">
+                        Check Eligibility
+                        <span>→</span>
+                    </button>
+
+
+                    <div id="result" class="result hidden"></div>
+
+                </div>
+
+
+                <!-- RULES PANEL -->
+                <div class="panel rules">
+
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">POLICY</p>
+                            <h2>Attendance Rules</h2>
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <div class="rule-number">01</div>
+                        <div>
+                            <strong>Minimum Requirement</strong>
+                            <p>Students must maintain at least 75% attendance.</p>
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <div class="rule-number">02</div>
+                        <div>
+                            <strong>Eligibility</strong>
+                            <p>Attendance ≥ 75% is considered eligible.</p>
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <div class="rule-number">03</div>
+                        <div>
+                            <strong>Shortage</strong>
+                            <p>Attendance below 75% requires attention.</p>
+                        </div>
+                    </div>
+
+                    <div class="formula">
+                        <span>Attendance Percentage</span>
+                        <strong>
+                            (Classes Attended ÷ Total Classes) × 100
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT STUDENTS -->
+            <section class="panel recent">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <p class="eyebrow">OVERVIEW</p>
+                        <h2>Recent Attendance Records</h2>
+                    </div>
+
+                    <span class="live">● LIVE DATA</span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>ID</th>
+                                <th>Attendance</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <div class="student">
+                                        <div class="avatar">AS</div>
+                                        <strong>Ananya Sharma</strong>
+                                    </div>
+                                </td>
+
+                                <td>23A91A0501</td>
+
+                                <td>
+                                    <div class="progress">
+                                        <div style="width:92%"></div>
+                                    </div>
+                                    <span class="percentage">92%</span>
+                                </td>
+
+                                <td>
+                                    <span class="status eligible">
+                                        Eligible
+                                    </span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="student">
+                                        <div class="avatar">RK</div>
+                                        <strong>Rahul Kumar</strong>
+                                    </div>
+                                </td>
+
+                                <td>23A91A0502</td>
+
+                                <td>
+                                    <div class="progress">
+                                        <div style="width:81%"></div>
+                                    </div>
+                                    <span class="percentage">81%</span>
+                                </td>
+
+                                <td>
+                                    <span class="status eligible">
+                                        Eligible
+                                    </span>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="student">
+                                        <div class="avatar">PS</div>
+                                        <strong>Priya Singh</strong>
+                                    </div>
+                                </td>
+
+                                <td>23A91A0503</td>
+
+                                <td>
+                                    <div class="progress warning">
+                                        <div style="width:68%"></div>
+                                    </div>
+                                    <span class="percentage">68%</span>
+                                </td>
+
+                                <td>
+                                    <span class="status warning-status">
+                                        Shortage
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                <span>Attendify • Student Attendance Management System</span>
+                <span>DevOps Lab Project</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
